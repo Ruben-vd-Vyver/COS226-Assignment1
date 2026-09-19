@@ -22,7 +22,8 @@ public class Auction
         return highestBid;
     }
 
-    public int getHighestBidder() 
+    public int getHighestBidder()
+	    // Cool
     {
         return highestBidder;
     }
