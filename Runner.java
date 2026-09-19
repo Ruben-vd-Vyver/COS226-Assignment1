@@ -51,7 +51,28 @@ public class Runner
     /*Defines the behaviour of an individual bidder. Note you have to decide how to incorporate your lock.*/
     public void bidder(int bidderId) 
     {
-       
+	    double myBid = this.auction.getHighestBid();
+	    //brute force rng 
+	    Random random = new Random();
+	    int maxSpend=random.nextInt(10000000);
+	    while (maxSpend<500000) {
+		    maxSpend = random.nextInt(10000000);
+	    }
+
+	    //lock goes here:
+	    //
+	    //will do the do while spinning loop once Lucian makes locks >:(
+	    if(myBid < auction.getHighestBid() && myBid < maxSpend) {
+		    auction.placeBid(bidderId, auction.getHighestBid+500);
+		    myBid = auction.getHighestBid();
+		    //Will change above interval once testing.
+	    } else if (myBid < auction.getHighestBid() && myBid < maxSpend+30000) {
+		    auction.placeBid(bidderId, auction.getHighestBid+20);
+	    } else {
+		    //release lock and break the loop
+	    }
+
+
     }
 
     /*Optional Helper: Records and reports the results of the experiment.*/
